@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNN Model Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>KNN Model Prediction</h1>
+        </header>
+        
+        <form method="POST" action="/predict" class="prediction-form">
+            <div class="form-group">
+                <label for="method">Method:</label>
+                <input type="text" id="method" name="method" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="endpoint">Endpoint:</label>
+                <input type="text" id="endpoint" name="endpoint" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="protocol">Protocol:</label>
+                <input type="text" id="protocol" name="protocol" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="content_size">Content Size:</label>
+                <input type="text" id="content_size" name="content_size" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="no_of_requests">No of Requests:</label>
+                <input type="text" id="no_of_requests" name="no_of_requests" required>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Predict">
+            </div>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="result">
+                <h2>Predicted Status Code: {{ prediction }}</h2>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
